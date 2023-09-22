@@ -15,7 +15,7 @@ $dbname = "db_cliente";
     if($_POST['func'] == 'inserir'){
 
    
-    inserirCliente( $conn);
+    inserirCliente($conn);
     }
     if($_POST['func'] == 'listar'){
      listar_cliente ();   
