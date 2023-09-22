@@ -1,10 +1,10 @@
 
 
 <?php 
-     include_once '../../src/view/header.php';
+ 
+    include_once '../../src/view/header.php';
     ?>
 <body>
-
 
    
 
@@ -18,6 +18,7 @@
   
         <h3>Dados Do Cliente</h3>
         <input type="hidden" id="id" name="id">
+       
         <label for="razao_social">Razão social:</label>
         <input type="text" id="razao_social" name="razao_social">
         <br>
@@ -92,7 +93,7 @@
     <script>
         $(document).ready(function () {
             debugger;
-            $("#id").val(44);
+            $("#id").val(<?php echo $_GET['id_cliente']; ?>);
 
             if($('#id').val() != ''){
                 loadFormularioAjax($('#id').val()); 
@@ -133,7 +134,7 @@
 
                 // Faz uma solicitação AJAX POST para uma API
                 $.ajax({
-                    url: "http://localhost:81/src/Controller/ClienteController.php", // URL da API de exemplo
+                    url: "http://localhost/crud-clientes/src/Controller/ClienteController.php", // URL da API de exemplo
                     method: "PUT",
                    // dataType: "json",
                     data: dados,
@@ -206,7 +207,7 @@
             
             $('#id').val(id_cliente);
             $.ajax({
-                    url: "http://localhost:81/src/Controller/ClienteController.php?id="+id_cliente, // URL da API de exemplo
+                    url: "http://localhost/crud-clientes/src/Controller/ClienteController.php?id="+id_cliente, // URL da API de exemplo
                     method: "GET",
                     //data: dados,    
                     success: function (data) {
@@ -227,8 +228,7 @@
                         $("#municipio").val(data.municipio);
                         $("#pais").val(data.pais);
                         $("#cep").val(data.cep);
-
-                        
+                       
                     }, 
                     error: function (jqXHR, textStatus, errorThrown) {
                         alert("cliente não encontrado");

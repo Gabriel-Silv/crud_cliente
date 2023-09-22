@@ -1,4 +1,3 @@
-
 <?php
 namespace app\Repository;
 //require './vendor/autoload.php';
@@ -71,4 +70,3 @@ class EnderecoRepository {
         return $stmt->execute();
     }
 }
-

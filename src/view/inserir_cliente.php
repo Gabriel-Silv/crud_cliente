@@ -125,7 +125,7 @@
 
                 // Faz uma solicitação AJAX POST para uma API
                 $.ajax({
-                    url: "http://localhost:/crud-clientes/src/Controller/ClienteController.php", // URL da API de exemplo
+                    url: "http://localhost/crud-clientes/src/Controller/ClienteController.php", // URL da API de exemplo
                     method: "POST",
                     data: dados,
                     success: function (data) {

@@ -3,6 +3,7 @@ namespace app\Repository;
 
 //require './vendor/autoload.php';
 use app\Model\Cliente;
+use Exception;
 use PDO;
 use PDOException;
 
@@ -38,6 +39,9 @@ class ClienteRepository
 
     public function create(Cliente $cliente)
     {
+        
+      try{  
+        
         $query = "INSERT INTO clientes (razao_social, nome_fantasia, email, telefone, cnpj)
                   VALUES (:razao_social, :nome_santasia, :email, :telefone, :cnpj)";
         $stmt = $this->conn->prepare($query);
@@ -56,7 +60,11 @@ class ClienteRepository
         $stmt->execute();
         $id = $this->conn->lastInsertId();
         $result = $this->findById($id);
-        return $this->returnCliente($result, $cliente);
+       
+        return $result ;
+        } catch (PDOException $e) {
+            die($e->getMessage());
+        }
     }
 
     public function update(Cliente $cliente)
