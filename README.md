@@ -40,20 +40,59 @@ Windows:
   
 
 Linux :
- 1. instalação do PHP 
- 2. instalação do apache
- 3. instalação do mysql
- 4. configuração do mysql
+ 1. instalação do PHP
+    ```
+    sudo apt update
+    sudo apt install php
+    php -v
+    sudo apt install php-cli php-common
+    
+    udo apt install libapache2-mod-php
+
+    Após a instalação do PHP,
+    você pode reiniciar o servidor
+    Apache para garantir que o PHP
+    esteja funcionando corretamente:
+
+    sudo systemctl restart apache2
+    ``` 
+    
+ 3. instalação do apache
+    ```
+    sudo systemctl status apache2
+    sudo apt install apache2
+    sudo systemctl status apache2
+    sudo ufw allow 'Apache'
+    ```
+
+   Os arquivos de configuração principal do Apache estão 
+   localizados no diretório /etc/apache2/. Os arquivos de 
+   sites disponíveis estão em /etc/apache2/sites-available/ 
+   e os ativos estão em /var/www/html/ por padrão.
+
+   vscode pedindo senha na hora de salvar arquivo 
+   da permissão a pasta do projeto ou mudar o proprietário da pasta 
+   opção 1 
+    sudo chmod +755 <nomeArquivo ou nomeDiretorio>
+   opção 2 
+    ls -al
+    Caminhe até a pasta que contém o diretório a ser modificado, com o seguinte comando.
+    cd /caminho da pasta
+    sudo chown <user>:<user> -R <nomeDoDiretorio>
+    
+ 5. instalação do mysql
+ 6. configuração do mysql
  3. Habilitar modo de autenticação do MYSQL antiga no linux para logar com phpMyadmin
  
 Correção  do erro de autentição Mysql com o vsCode no ubuntu execute:
+```
 sudo mysql
 SELECT user,authentication_string,plugin,host FROM mysql.user;
 para o modo nativo o mais antigo
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'password';
 
 FLUSH PRIVILEGES;
-
+```
 
 
 
